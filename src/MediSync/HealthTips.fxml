@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pannable="true" prefHeight="1080.0" prefWidth="1568.0" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MediSync.HealthTipsController">
+   <content>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2587.0" prefWidth="1572.0">
+         <children>
+            <Text fill="#283593" text="Health Tips" textAlignment="CENTER" wrappingWidth="764.6666870117188">
+               <font>
+                  <Font name="Segoe UI Bold" size="64.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="400.0" top="55.0" />
+               </VBox.margin>
+            </Text>
+            <Text fill="#283593" layoutX="50.0" layoutY="89.0" text="Measure and Watch Your Weight " textAlignment="CENTER" wrappingWidth="970.0000610351562">
+               <font>
+                  <Font name="Segoe UI Bold" size="36.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="90.0" />
+               </VBox.margin>
+            </Text>
+            <HBox spacing="50.0">
+               <children>
+                  <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 30px;">
+                     <image>
+                        <Image url="@Images/tip1.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#283593" text="Keeping track of your body weight on a daily or weekly basis will help you see what you’re losing and/or what you’re gaining." wrappingWidth="872.6668090820312">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets left="200.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </HBox>
+            <Text fill="#283593" layoutX="10.0" layoutY="170.0" text="Limit Unhealthy Foods and Eat Healthy Meals" textAlignment="CENTER" wrappingWidth="1160.666748046875">
+               <font>
+                  <Font name="Segoe UI Bold" size="36.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </Text>
+            <HBox layoutX="10.0" layoutY="179.0" prefHeight="157.0" prefWidth="1434.0" spacing="50.0">
+               <children>
+                  <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 30px;">
+                     <image>
+                        <Image url="@Images/tip2.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#283593" text="Do not forget to eat breakfast and choose a nutritious meal with more protein and fiber and less fat, sugar, and calories" wrappingWidth="873.9999389648438">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets left="200.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </HBox>
+            <Text fill="#283593" layoutX="10.0" layoutY="370.0" text="Take Multivitamin Supplements" textAlignment="CENTER" wrappingWidth="932.666748046875">
+               <font>
+                  <Font name="Segoe UI Bold" size="36.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </Text>
+            <HBox layoutX="10.0" layoutY="379.0" prefHeight="176.0" prefWidth="1572.0" spacing="50.0">
+               <children>
+                  <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 30px;">
+                     <image>
+                        <Image url="@Images/tip3.jpeg" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#283593" text="To make sure you have sufficient levels of nutrients, taking a daily multivitamin supplement is a good idea, especially when you do not have a variety of vegetables and fruits at home. Many micronutrients are vital to your immune system, including vitamins A, B6, B12, C, D, and E, as well as zinc, iron, copper, selenium, and magnesium." textAlignment="JUSTIFY" wrappingWidth="877.9999389648438">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets left="200.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </HBox>
+            <Text fill="#283593" layoutX="10.0" layoutY="570.0" text="Drink Water and Stay Hydrated, and Limit Sugared Beverages " textAlignment="CENTER" wrappingWidth="1448.666748046875">
+               <font>
+                  <Font name="Segoe UI Bold" size="36.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </Text>
+            <HBox layoutX="10.0" layoutY="579.0" spacing="50.0">
+               <children>
+                  <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 30px;">
+                     <image>
+                        <Image url="@Images/tip4.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#283593" text="Drink water regularly to stay healthy, but there is NO evidence that drinking water frequently (e.g. every 15 minutes) can help prevent any viral infection." wrappingWidth="876.6665649414062">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets left="200.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </HBox>
+            <Text fill="#283593" layoutX="10.0" layoutY="1178.0" text="Exercise Regularly and Be Physically Active" textAlignment="CENTER" wrappingWidth="1118.666748046875">
+               <font>
+                  <Font name="Segoe UI Bold" size="36.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </Text>
+            <HBox layoutX="10.0" layoutY="1227.0" spacing="50.0">
+               <children>
+                  <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 30px;">
+                     <image>
+                        <Image url="@Images/tip6.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#283593" text="At this time, at-home workouts may be a good idea. But you can also walk your dog or run outside. Be sure you know what’s going on in your area and if there are any restrictions or mandatory self-quarantines. For more information on how to stay physically active while at home," wrappingWidth="876.6665649414062">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets left="200.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </HBox>
+            <Text fill="#283593" layoutX="10.0" layoutY="1423.0" text="Reduce Sitting and Screen Time" textAlignment="CENTER" wrappingWidth="932.666748046875">
+               <font>
+                  <Font name="Segoe UI Bold" size="36.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </Text>
+            <HBox layoutX="10.0" layoutY="1432.0" spacing="50.0">
+               <children>
+                  <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 30px;">
+                     <image>
+                        <Image url="@Images/tip5.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#283593" text="Exercise can’t immunize you from your sedentary time. Even people who exercise regularly could be at increased risk for diabetes and heart disease and stroke if they spend lots of time sitting behind computers. Practically speaking, you could consider taking breaks from sedentary time, such as walking around the office/room a couple of times in a day. " wrappingWidth="876.6665649414062">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets left="200.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </HBox>
+            <Text fill="#283593" layoutX="10.0" layoutY="1628.0" text="Get Enough Good Sleep" textAlignment="CENTER" wrappingWidth="798.666748046875">
+               <font>
+                  <Font name="Segoe UI Bold" size="36.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </Text>
+            <HBox layoutX="10.0" layoutY="1637.0" spacing="50.0">
+               <children>
+                  <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 30px;">
+                     <image>
+                        <Image url="@Images/tip7.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#283593" text="There is a very strong connection between sleep quality and quantity and your immune system. You can keep your immune system functioning properly by getting seven to eight hours of sleep each night." wrappingWidth="876.6665649414062">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets left="200.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </HBox>
+            <Text fill="#283593" layoutX="10.0" layoutY="1833.0" text="Find Ways to Manage Your Emotions" textAlignment="CENTER" wrappingWidth="1012.666748046875">
+               <font>
+                  <Font name="Segoe UI Bold" size="36.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </Text>
+            <HBox layoutX="10.0" layoutY="1842.0" spacing="50.0">
+               <children>
+                  <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 30px;">
+                     <image>
+                        <Image url="@Images/tip8.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#283593" text="It is common for people to have feelings of fear, anxiety, sadness, and uncertainty during a pandemic." wrappingWidth="876.6665649414062">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets left="200.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>

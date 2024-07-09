@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="pane" prefHeight="930.0" prefWidth="1568.0" style="-fx-background-color: #fffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MediSync.UsersController">
+   <children>
+      <TextField fx:id="searchBar" layoutX="102.0" layoutY="34.0" prefHeight="62.0" prefWidth="933.0" promptText="Search by Email" style="-fx-background-color: #E3F2FD; -fx-background-radius: 30px; -fx-border-color: #1A237E; -fx-border-radius: 30px; -fx-text-fill: #0d134b;">
+         <font>
+            <Font name="Segoe UI" size="24.0" />
+         </font></TextField>
+      <Button fx:id="searchButton" layoutX="1212.0" layoutY="33.0" onAction="#performSearch" prefHeight="62.0" prefWidth="96.0" style="-fx-background-color: #1A237E; -fx-text-fill: white; -fx-background-radius: 30px;" text="Search" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="18.0" />
+         </font></Button>
+      <Text fx:id="resultText" fill="#FFEB3B" layoutX="59.0" layoutY="100.0" style="-fx-font-size: 16px;" />
+      <TableView fx:id="userTable" layoutY="185.0" prefHeight="745.0" prefWidth="1564.0" stylesheets="@styles.css">
+        <columns>
+          <TableColumn fx:id="userEmail" prefWidth="300.0" style="-fx-text-fill: #0d134b; -fx-font-weight: bold;" text="Email" />
+          <TableColumn fx:id="userPhone" prefWidth="300.0" style="-fx-text-fill: #0d134b; -fx-font-weight: bold;" text="Phone Number" />
+          <TableColumn fx:id="userDOB" prefWidth="300.0" style="-fx-text-fill: #0d134b; -fx-font-weight: bold;" text="Date of Birth" />
+          <TableColumn fx:id="userGender" prefWidth="300.0" style="-fx-text-fill: #0d134b; -fx-font-weight: bold;" text="Gender" />
+          <TableColumn fx:id="userAddress" prefWidth="362.0" style="-fx-text-fill: #0d134b; -fx-font-weight: bold;" text="Address" />
+        </columns>
+        <!-- Adding stripe effect for rows -->
+        <style>
+          -fx-control-inner-background: #1E88E5;
+          -fx-control-inner-background-alt: #1565C0;  <!-- Alternate rows different color -->
+          -fx-accent: #64B5F6;  <!-- Color for selected row -->
+        </style>
+         <styleClass>
+            <String fx:value="column-header" />
+            <String fx:value="column-header-background" />
+            <String fx:value="label" />
+            <String fx:value="med-table" />
+            <String fx:value="med-table" />
+            <String fx:value="med-table" />
+            <String fx:value="table-cell" />
+            <String fx:value="table-row-cell" />
+         </styleClass>
+      </TableView>
+   </children>
+</Pane>

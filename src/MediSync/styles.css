@@ -1,0 +1,46 @@
+.med-table {
+    -fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5);
+    -fx-table-cell-border-color: transparent;
+    -fx-padding: 10;
+}
+
+.med-table .column-header-background {
+    -fx-background-color: #0d134b;
+}
+
+.med-table .column-header, .med-table .column-header .label {
+    -fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); /* Set header background color */
+    -fx-text-fill: white; /* Text color for column headers */
+    -fx-alignment: CENTER_LEFT;
+    -fx-font-size: 18px; /* Set font size for column headers */
+    -fx-padding: 10px 0; /* Adjust padding to increase height */
+}
+
+.med-table .table-row-cell {
+    -fx-min-height: 60px; /* Set minimum height for rows */
+    -fx-pref-height: 60px; /* Set preferred height for rows */
+    -fx-max-height: 60px; /* Set maximum height for rows */
+    -fx-font-size: 18px; /* Set font size for table cells */
+}
+
+.med-table .table-cell {
+    -fx-background-color: white;
+    -fx-text-fill: #0d134b; /* Text color for table cells */
+    -fx-font-size: 18px; /* Set font size for table cells */
+}
+
+.med-table .table-row-cell:odd {
+    -fx-background-color: #E3F2FD;
+    -fx-text-fill: #0d134b; /* Ensure text color for odd rows */
+}
+
+.med-table .table-row-cell:even {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #0d134b; /* Ensure text color for even rows */
+}
+
+.med-table .table-row-cell:filled:selected, .med-table .table-row-cell:selected, .med-table .table-cell:selected {
+    -fx-background: #3F51B5;
+    -fx-background-color: #3F51B5;
+    -fx-text-fill: white; /* Text color for selected cells */
+}
