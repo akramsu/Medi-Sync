@@ -87,7 +87,7 @@ public class ConsultController {
 
     private void openWhatsAppChat() {
         try {
-            Desktop.getDesktop().browse(new URI("https://wa.me/+6282210885537"));
+            Desktop.getDesktop().browse(new URI("https://wa.me/+6200000000000"));
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
