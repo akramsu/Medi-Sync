@@ -266,9 +266,9 @@
                               </GridPane>
 
                               <!-- Label to display selected date -->
-                              <Label fx:id="selectedDateLabel" layoutX="138.0" layoutY="620.0" prefHeight="30.0" prefWidth="600.0" textFill="#0d134b">
+                              <Label fx:id="selectedDateLabel" alignment="CENTER" layoutX="174.0" layoutY="620.0" prefHeight="30.0" prefWidth="461.0" textFill="#0d134b">
                                  <font>
-                                    <Font name="Segoe UI" size="20.0" />
+                                    <Font name="Segoe UI Bold Italic" size="20.0" />
                                  </font>
                               </Label>
                            </children>

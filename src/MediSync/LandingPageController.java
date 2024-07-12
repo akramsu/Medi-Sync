@@ -92,7 +92,8 @@ public class LandingPageController implements Initializable {
     private LocalDate startDate;
     private Random random;
 
-    private Button selectedButton;
+    private Button selectedNavButton;
+    private Button selectedCalendarButton;
     private OrderDataManager orderDataManager;
 
     @FXML
@@ -120,7 +121,7 @@ public class LandingPageController implements Initializable {
 
         // Initialize selected button effect
         initializeButtonEffects();
-        applyButtonStyle(Home);
+        applyNavButtonStyle(Home);
 
         // Initialize OrderDataManager
         orderDataManager = new OrderDataManager();
@@ -142,7 +143,7 @@ public class LandingPageController implements Initializable {
         Profile.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
         Logout.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
 
-        selectedButton = Home;
+        selectedNavButton = Home;
 
         addHoverEffect(Home);
         addHoverEffect(Catalog);
@@ -154,21 +155,21 @@ public class LandingPageController implements Initializable {
 
     private void addHoverEffect(Button button) {
         button.setOnMouseEntered(e -> {
-            if (button != selectedButton) {
+            if (button != selectedNavButton) {
                 button.setStyle("-fx-background-color: #757DE8; -fx-text-fill: white; -fx-background-radius: 10px; -fx-cursor: hand;");
             }
         });
 
         button.setOnMouseExited(e -> {
-            if (button != selectedButton) {
+            if (button != selectedNavButton) {
                 button.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
             }
         });
     }
 
-    private void applyButtonStyle(Button button) {
-        if (selectedButton != null) {
-            selectedButton.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
+    private void applyNavButtonStyle(Button button) {
+        if (selectedNavButton != null) {
+            selectedNavButton.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
         }
         button.setStyle(
             "-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); " +
@@ -179,13 +180,21 @@ public class LandingPageController implements Initializable {
             "-fx-border-radius: 30px; " +
             "-fx-effect: dropshadow(gaussian, #283593, 10, 0.5, 0, 0);"
         );
-        selectedButton = button;
+        selectedNavButton = button;
+    }
+
+    private void applyCalendarButtonStyle(Button button) {
+        if (selectedCalendarButton != null) {
+            selectedCalendarButton.setStyle("-fx-background-color: #E3F2FD; -fx-background-radius: 10;");
+        }
+        button.setStyle("-fx-background-color: #0d134b; -fx-background-radius: 10; -fx-text-fill: white;");
+        selectedCalendarButton = button;
     }
 
     @FXML
     private void ButtonHome(ActionEvent event) {
         mainPane.setCenter(pane);
-        applyButtonStyle(Home);
+        applyNavButtonStyle(Home);
     }
 
     @FXML
@@ -195,7 +204,7 @@ public class LandingPageController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/CatalogPage.fxml"));
             Pane catalogPage = loader.load();
             mainPane.setCenter(catalogPage);
-            applyButtonStyle(Catalog);
+            applyNavButtonStyle(Catalog);
         } catch (IOException e) {
             System.out.println("Error loading catalog page: " + e.getMessage());
             e.printStackTrace();
@@ -209,7 +218,7 @@ public class LandingPageController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/HealthTips.fxml"));
             ScrollPane healthTipsPage = loader.load();
             mainPane.setCenter(healthTipsPage);
-            applyButtonStyle(HealthTips);
+            applyNavButtonStyle(HealthTips);
         } catch (IOException e) {
             System.out.println("Error loading health tips page: " + e.getMessage());
             e.printStackTrace();
@@ -223,7 +232,7 @@ public class LandingPageController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/ConsultPage.fxml"));
             Pane consultPage = loader.load();
             mainPane.setCenter(consultPage);
-            applyButtonStyle(Consult);
+            applyNavButtonStyle(Consult);
         } catch (IOException e) {
             System.out.println("Error loading consult page: " + e.getMessage());
             e.printStackTrace();
@@ -237,7 +246,7 @@ public class LandingPageController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/ProfilePage.fxml"));
             Pane profilePage = loader.load();
             mainPane.setCenter(profilePage);
-            applyButtonStyle(Profile);
+            applyNavButtonStyle(Profile);
         } catch (IOException e) {
             System.out.println("Error loading profile page: " + e.getMessage());
             e.printStackTrace();
@@ -251,7 +260,7 @@ public class LandingPageController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/LogoutPage.fxml")); // Correct path to FXML
             Pane logoutPage = loader.load();
             mainPane.setCenter(logoutPage); // Setting the logout page at the center
-            applyButtonStyle(Logout);
+            applyNavButtonStyle(Logout);
         } catch (IOException e) {
             System.out.println("Error loading logout page: " + e.getMessage());
             e.printStackTrace(); // Print stack trace for detailed debug information
@@ -350,7 +359,7 @@ public class LandingPageController implements Initializable {
         label.setStyle("-fx-text-fill: #FFFFFF; -fx-font-size: 18px;");
     }      
 
-        // Calendar Drawing Methods
+    // Calendar Drawing Methods
     private void drawCalendar() {
         YearMonth yearMonth = YearMonth.now();
         LocalDate firstOfMonth = yearMonth.atDay(1);
@@ -390,16 +399,10 @@ public class LandingPageController implements Initializable {
             }
         }
 
-        // Set the layout Y coordinate of the calendarGrid to -30
         calendarGrid.setLayoutY(250);
     }
 
     private void highlightDate(Button button) {
-        if (selectedButton != null) {
-            selectedButton.setStyle("-fx-background-color: #E3F2FD; -fx-background-radius: 10;");
-        }
-        button.setStyle("-fx-background-color: #0d134b; -fx-background-radius: 10; -fx-text-fill: white;");
-        selectedButton = button;
+        applyCalendarButtonStyle(button);
     }
-
 }
