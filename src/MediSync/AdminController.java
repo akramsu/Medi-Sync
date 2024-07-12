@@ -1,8 +1,11 @@
 package MediSync;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import MediSync.MediSync_Model.MedicinesData;
+import MediSync.MediSync_Model.OrderData;
+import MediSync.MediSync_Model.OrderDataManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +18,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import MediSync.MediSync_Model.OrderData;
+import MediSync.MediSync_Model.OrderDataManager;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.util.List;
 
 public class AdminController {
     private OpenScene openScene = new OpenScene();
@@ -30,6 +43,10 @@ public class AdminController {
 
     @FXML
     private Button create;
+    @FXML
+    private Button update;
+    @FXML
+    private Button delete;
 
     @FXML
     private Button Logout;
@@ -77,6 +94,26 @@ public class AdminController {
             e.printStackTrace();
         }
     }
+    @FXML
+    private void ButtonUpdate(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/updatePage.fxml"));
+            Pane consultPage = loader.load();
+            mainPane.setCenter(consultPage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void ButtonDelete(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/deletePage.fxml"));
+            Pane consultPage = loader.load();
+            mainPane.setCenter(consultPage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void ButtonLogout(ActionEvent event) {
@@ -94,50 +131,60 @@ public class AdminController {
     @FXML
     private Button searchButton;
     @FXML
-    private TableView<MedicinesData> MedTable;
+    private TableView<OrderData> ordersTableView;
     @FXML
-    private TableColumn<MedicinesData, String> MedName;
+    private TableColumn<OrderData, String> orderIdColumn;
     @FXML
-    private TableColumn<MedicinesData, String> MedForm;
+    private TableColumn<OrderData, String> userEmailColumn;
     @FXML
-    private TableColumn<MedicinesData, String> MedDesc;
+    private TableColumn<OrderData, String> medicineNameColumn;
     @FXML
-    private TableColumn<MedicinesData, String> MedExp;
+    private TableColumn<OrderData, Integer> quantityColumn;
     @FXML
-    private TableColumn<MedicinesData, Double> MedPrice;
+    private TableColumn<OrderData, Double> totalPriceColumn;
     @FXML
-    private TableColumn<MedicinesData, Integer> MedQuant;
-    @FXML
-    private Pane noResultsOverlay; // The overlay pane for no results
+    private TableColumn<OrderData, LocalDate> orderDateColumn;
 
+    private OrderDataManager orderDataManager;
+
+    
     public void initialize() {
-        MedName.setCellValueFactory(new PropertyValueFactory<>("Username"));
-        MedForm.setCellValueFactory(new PropertyValueFactory<>("Phone Number"));
-        MedDesc.setCellValueFactory(new PropertyValueFactory<>("medicineName"));
-        MedExp.setCellValueFactory(new PropertyValueFactory<>("medicineDescription"));
-        MedPrice.setCellValueFactory(new PropertyValueFactory<>("medicinePrice"));
-        MedQuant.setCellValueFactory(new PropertyValueFactory<>("medicineQuantity"));
+        orderDataManager = new OrderDataManager();
+
+        orderIdColumn.setCellValueFactory(new PropertyValueFactory<>("orderId"));
+        userEmailColumn.setCellValueFactory(new PropertyValueFactory<>("userEmail"));
+        medicineNameColumn.setCellValueFactory(new PropertyValueFactory<>("medicineName"));
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        totalPriceColumn.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
+        orderDateColumn.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
+
+        loadOrders();
 
         pane.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
     }
 
+    private void loadOrders() {
+        List<OrderData> orders = orderDataManager.getAllOrders();
+        ObservableList<OrderData> observableOrders = FXCollections.observableArrayList(orders);
+        ordersTableView.setItems(observableOrders);
+    }
 
     @FXML
     private void performSearch(ActionEvent event) {
-        String searchQuery = searchBar.getText().trim().toLowerCase();
-        ObservableList<MedicinesData> filteredData = FXCollections.observableArrayList();
+        // String searchQuery = searchBar.getText().trim().toLowerCase();
+        // ObservableList<MedicinesData> filteredData = FXCollections.observableArrayList();
 
-        for (MedicinesData medicine : MedTable.getItems()) {
-            if (medicine.getMedicineName().toLowerCase().contains(searchQuery)) {
-                filteredData.add(medicine);
-            }
-        }
+        // for (MedicinesData medicine : MedTable.getItems()) {
+        //     if (medicine.getMedicineName().toLowerCase().contains(searchQuery)) {
+        //         filteredData.add(medicine);
+        //     }
+        // }
 
-        MedTable.setItems(filteredData);
-        noResultsOverlay.setVisible(filteredData.isEmpty());
+        // MedTable.setItems(filteredData);
+        // noResultsOverlay.setVisible(filteredData.isEmpty());
     }
 
     private void hideNoResultsOverlay() {
-        noResultsOverlay.setVisible(false);
+        // noResultsOverlay.setVisible(false);
     }
 }

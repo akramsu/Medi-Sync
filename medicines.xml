@@ -1,0 +1,26 @@
+<list>
+  <medicine>
+    <medicineName>uuuuuuu</medicineName>
+    <medicineForm>Tablets</medicineForm>
+    <medicineDescription>asdfasdf</medicineDescription>
+    <medicineExpirationDate>07-14-2024</medicineExpirationDate>
+    <medicinePrice>234523.0</medicinePrice>
+    <medicineQuantity>5</medicineQuantity>
+  </medicine>
+  <medicine>
+    <medicineName>uuuuuuu</medicineName>
+    <medicineForm>Tablets</medicineForm>
+    <medicineDescription>asdfasdf</medicineDescription>
+    <medicineExpirationDate>07-14-2024</medicineExpirationDate>
+    <medicinePrice>234523.0</medicinePrice>
+    <medicineQuantity>5</medicineQuantity>
+  </medicine>
+  <medicine>
+    <medicineName>uuuuuuu</medicineName>
+    <medicineForm>Tablets</medicineForm>
+    <medicineDescription>asdfasdf</medicineDescription>
+    <medicineExpirationDate>07-14-2024</medicineExpirationDate>
+    <medicinePrice>234523.0</medicinePrice>
+    <medicineQuantity>5</medicineQuantity>
+  </medicine>
+</list>

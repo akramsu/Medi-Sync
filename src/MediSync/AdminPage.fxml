@@ -75,9 +75,9 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="352.0">
+                  <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="86.0" prefWidth="352.0">
                      <children>
-                        <Button fx:id="create" mnemonicParsing="false" onAction="#ButtonCreate" prefHeight="45.0" prefWidth="155.0" style="-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); -fx-background-radius: 30px;" text="Create" textFill="WHITE">
+                        <Button fx:id="create" mnemonicParsing="false" onAction="#ButtonCreate" prefHeight="45.0" prefWidth="164.0" style="-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); -fx-background-radius: 30px;" text="Add" textFill="WHITE">
                            <font>
                               <Font name="Segoe UI" size="24.0" />
                            </font>
@@ -87,14 +87,33 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="69.0" prefWidth="352.0">
-                     <VBox.margin>
-                        <Insets top="350.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox prefHeight="73.0" prefWidth="352.0">
+                  <HBox layoutX="10.0" layoutY="473.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="86.0" prefWidth="352.0">
                      <children>
-                        <Button fx:id="Logout" mnemonicParsing="false" onAction="#ButtonLogout" prefHeight="45.0" prefWidth="168.0" style="-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); -fx-background-radius: 30px;" text="Logout" textFill="WHITE">
+                        <Button fx:id="update" mnemonicParsing="false" onAction="#ButtonUpdate" prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); -fx-background-radius: 30px;" text="Upadate" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI" size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="85.0" top="40.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="689.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="86.0" prefWidth="352.0">
+                     <children>
+                        <Button fx:id="delete" mnemonicParsing="false" onAction="#ButtonDelete" prefHeight="45.0" prefWidth="166.0" style="-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); -fx-background-radius: 30px;" text="Delete" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI" size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="85.0" top="40.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="0.0" prefWidth="352.0">
+                     <children>
+                        <Button fx:id="Logout" mnemonicParsing="false" onAction="#ButtonLogout" prefHeight="45.0" prefWidth="174.0" style="-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); -fx-background-radius: 30px;" text="Logout" textFill="WHITE">
                            <font>
                               <Font name="Segoe UI" size="24.0" />
                            </font>
@@ -103,6 +122,9 @@
                            </HBox.margin>
                         </Button>
                      </children>
+                     <VBox.margin>
+                        <Insets top="150.0" />
+                     </VBox.margin>
                   </HBox>
                </children>
             </VBox>
@@ -112,14 +134,14 @@
                <children>
                   <Pane fx:id="pane1" style="-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5);">
                      <children>
-                        <TableView fx:id="MedTable" layoutY="204.0" prefHeight="877.0" prefWidth="1568.0" style="-fx-background-color: #E3F2FD; -fx-border-color: #1A237E;" stylesheets="@styles.css">
+                        <TableView fx:id="ordersTableView" layoutY="204.0" prefHeight="877.0" prefWidth="1568.0" style="-fx-background-color: #E3F2FD; -fx-border-color: #1A237E;" stylesheets="@styles.css">
                            <columns>
-                              <TableColumn fx:id="MedName" prefWidth="331.3333282470703" text="Medicine Name" />
-                              <TableColumn fx:id="MedForm" minWidth="0.0" prefWidth="167.6666717529297" text="Form" />
-                              <TableColumn fx:id="MedDesc" minWidth="0.0" prefWidth="173.0" text="Description" />
-                              <TableColumn fx:id="MedExp" prefWidth="398.3333740234375" text="Expiration Date" />
-                              <TableColumn fx:id="MedPrice" prefWidth="167.0" text="Price" />
-                              <TableColumn fx:id="MedQuant" prefWidth="331.0" text="Quantity" />
+                              <TableColumn fx:id="orderIdColumn" prefWidth="200.0" text="Order ID" />
+                              <TableColumn fx:id="userEmailColumn" prefWidth="300.0" text="User Email" />
+                              <TableColumn fx:id="medicineNameColumn" prefWidth="300.0" text="Medicine Name" />
+                              <TableColumn fx:id="quantityColumn" prefWidth="200.0" text="Quantity" />
+                              <TableColumn fx:id="totalPriceColumn" prefWidth="200.0" text="Total Price" />
+                              <TableColumn fx:id="orderDateColumn" prefWidth="300.0" text="Order Date" />
                            </columns>
                            <styleClass>
                               <String fx:value="column-header" />

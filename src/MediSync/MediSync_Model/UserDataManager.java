@@ -5,13 +5,12 @@ import com.thoughtworks.xstream.io.xml.StaxDriver;
 import com.thoughtworks.xstream.security.NoTypePermission;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserDataManager {
     private DataArray userDataArray;
     private XStream xstream;
-    private static final String FILE_PATH = "src/MediSync/MediSync_Model/users.xml"; // Adjusted file path
+    private static final String FILE_PATH = "src/MediSync/MediSync_Model/users.xml";
 
     public UserDataManager() {
         userDataArray = new DataArray(100); // Example size
@@ -25,10 +24,16 @@ public class UserDataManager {
         xstream.allowTypesByWildcard(new String[]{"MediSync.**"});
         xstream.alias("user", UserData.class);
         xstream.alias("dataArray", DataArray.class);
+        xstream.omitField(DataArray.class, "idx"); // Omit the idx field
     }
 
     public void addUser(UserData user) {
         userDataArray.addUserData(user);
+        saveUserData();
+    }
+
+    public void removeUser(String email) {
+        userDataArray.removeUserData(email);
         saveUserData();
     }
 

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1568.0" style="-fx-background-color: #C7E3F8;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MediSync.BuyController">
+    <children>
+        <SplitPane dividerPositions="0.5" orientation="HORIZONTAL" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+            <items>
+                <!-- Order Summary Panel -->
+                <AnchorPane>
+                    <children>
+                        <VBox alignment="TOP_CENTER" layoutX="43.0" layoutY="149.0" prefHeight="362.0" prefWidth="701.0" spacing="10" style="-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); -fx-background-radius: 50px;" VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets bottom="10" left="10" right="10" top="10" />
+                            </padding>
+                            <children>
+                        <ImageView fitHeight="74.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/order.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </ImageView>
+                                <Label prefHeight="83.0" prefWidth="371.0" text="Order Summary" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Bold" size="48.0" />
+                           </font></Label>
+                                <Label fx:id="medicineName" prefHeight="29.0" prefWidth="264.0" text="MedicineName" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="Segoe UI" size="24.0" />
+                           </font></Label>
+                        <Label fx:id="quantity" layoutX="229.0" layoutY="220.0" prefHeight="29.0" prefWidth="264.0" text="Quantity" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="Segoe UI" size="24.0" />
+                           </font>
+                        </Label>
+                                <!-- Additional components can be added here -->
+                            </children>
+                        </VBox>
+                  <VBox layoutX="91.0" layoutY="454.0" prefHeight="178.0" prefWidth="612.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30px; -fx-border-color: #0d134b; -fx-border-radius: 30px;">
+                     <children>
+                        <HBox>
+                           <children>
+                              <ImageView fitHeight="78.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/price.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="20.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Label alignment="CENTER" prefHeight="89.0" prefWidth="252.0" text="Order Recipiet" textFill="#0d134b" wrapText="true">
+                                 <font>
+                                    <Font name="Segoe UI" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="33.0" prefWidth="157.0" text="Additional fee:" textFill="#0d134b" wrapText="true">
+                                 <font>
+                                    <Font name="Segoe UI" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefHeight="33.0" prefWidth="157.0" text="\$10" textFill="#0d134b" wrapText="true">
+                                 <font>
+                                    <Font name="Segoe UI" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="32.0" prefWidth="158.0" text="Discount 25%:" textFill="#0d134b" wrapText="true">
+                                 <font>
+                                    <Font name="Segoe UI" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefHeight="32.0" prefWidth="158.0" text="-10$" textFill="#0d134b" wrapText="true">
+                                 <font>
+                                    <Font name="Segoe UI" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="90.0" layoutY="633.0" prefHeight="50.0" prefWidth="611.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30px; -fx-border-color: #0d134b; -fx-border-radius: 30px;">
+                     <children>
+                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="600.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="50.0" prefWidth="170.0" text="Total:" textFill="#0d134b" wrapText="true">
+                                 <font>
+                                    <Font name="Segoe UI" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="price" alignment="CENTER" prefHeight="48.0" prefWidth="138.0" text="Price" textFill="#0d134b" wrapText="true">
+                                 <font>
+                                    <Font name="Segoe UI" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                    </children>
+                </AnchorPane>
+                <!-- Payment Details Panel -->
+                <AnchorPane>
+                    <children>
+                        <VBox alignment="TOP_CENTER" layoutX="117.0" layoutY="167.0" prefHeight="605.0" prefWidth="527.0" spacing="20" style="-fx-background-color: #ffffff; -fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: #0d134b;" VBox.vgrow="ALWAYS">
+                            <padding>
+                                <Insets bottom="10" left="10" right="10" top="10" />
+                            </padding>
+                            <children>
+                                <Label alignment="CENTER" prefHeight="69.0" prefWidth="539.0" text="Payment Details" textFill="#0d134b">
+                           <font>
+                              <Font name="Segoe UI Bold" size="36.0" />
+                           </font></Label>
+                        <HBox prefHeight="60.0" prefWidth="505.0">
+                           <children>
+                              <Button fx:id="visa" mnemonicParsing="false" onAction="#visabt" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: #ffffff;">
+                                 <graphic>
+                                    <ImageView fitHeight="44.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Images/visa.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="stripe" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#stripebt" style="-fx-background-color: #ffffff;">
+                                 <graphic>
+                                    <ImageView fitHeight="59.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Images/stripe.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="paypal" layoutX="107.0" layoutY="10.0" mnemonicParsing="false" onAction="#paypalbt" prefHeight="52.0" prefWidth="142.0" style="-fx-background-color: #ffffff;">
+                                 <graphic>
+                                    <ImageView fitHeight="41.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Images/paypal.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="204.0" layoutY="10.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="77.0" style="-fx-background-color: #ffffff;">
+                                 <graphic>
+                                    <ImageView fitHeight="55.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Images/mastercard.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                                <HBox spacing="10" />
+                        <TextField fx:id="cardNumber" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="47.0" prefWidth="339.0" promptText="Card Number*" style="-fx-background-color: #ffffff; -fx-background-radius: 30px; -fx-border-radius: 30px; -fx-border-color: #0d134b;">
+                           <font>
+                              <Font name="Segoe UI" size="24.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="cvv" layoutX="21.0" layoutY="240.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="335.0" promptText="CVV*" style="-fx-background-color: #ffffff; -fx-background-radius: 30px; -fx-border-radius: 30px; -fx-border-color: #0d134b;">
+                           <font>
+                              <Font name="Segoe UI" size="24.0" />
+                           </font>
+                        </TextField>
+                        <DatePicker maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="329.0" promptText="Expiry Date*" style="-fx-background-color: #E3F2FD; -fx-background-radius: 30px; -fx-border-color: #283593;" />
+                        <Button fx:id="pay" mnemonicParsing="false" onAction="#buttonPay" prefHeight="65.0" prefWidth="192.0" style="-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); -fx-background-radius: 30PX;" text="Pay" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="70.0" />
+                           </VBox.margin>
+                        </Button>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

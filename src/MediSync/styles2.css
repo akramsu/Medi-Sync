@@ -1,0 +1,28 @@
+.root {
+    -fx-font-family: 'Inter', sans-serif;
+}
+
+.header-title {
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-background-color: #6366f1; /* Indigo-500 */
+    -fx-padding: 10px;
+}
+
+.button {
+    -fx-background-color: #6366f1; /* Indigo-500 */
+    -fx-text-fill: white;
+    -fx-padding: 10px;
+}
+
+.button:hover {
+    -fx-background-color: #4f46e5; /* Indigo-600 */
+}
+
+.radio-button .label {
+    -fx-text-fill: #333;
+}
+
+.radio-button:selected .label {
+    -fx-text-fill: #6366f1; /* Indigo-500 */
+}

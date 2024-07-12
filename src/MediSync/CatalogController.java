@@ -14,18 +14,17 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Popup;
-
+import javafx.util.Callback;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import com.thoughtworks.xstream.security.AnyTypePermission;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import MediSync.MediSync_Model.MedicinesData;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
-
+import javafx.scene.control.TableCell;
 
 public class CatalogController {
 
@@ -39,44 +38,26 @@ public class CatalogController {
     private Button cart;
     @FXML
     private Button notification;
-
     @FXML
     private TableView<MedicinesData> MedTable;
-
     @FXML
     private TableColumn<MedicinesData, String> MedName;
-
     @FXML
     private TableColumn<MedicinesData, String> MedForm;
-
     @FXML
     private TableColumn<MedicinesData, String> MedDesc;
-
     @FXML
     private TableColumn<MedicinesData, String> MedExp;
-
     @FXML
     private TableColumn<MedicinesData, Double> MedPrice;
-
     @FXML
     private TableColumn<MedicinesData, Integer> MedQuant;
     @FXML
+    private TableColumn<MedicinesData, Void> buyColumn;
+    @FXML
     private Pane noResultsOverlay; // The overlay pane for no results
 
-
-
-
-    @FXML
-    public void ButtonCart(ActionEvent event){
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/CartPage.fxml"));
-                Pane cartPage = loader.load();
-                pane.getChildren().setAll(cartPage);
-            } catch (IOException e) {
-                System.out.println("Error loading cart page: " + e.getMessage());
-                e.printStackTrace();
-            }
-    }
+    private Popup popup;
 
     public void initialize() {
         MedName.setCellValueFactory(new PropertyValueFactory<>("medicineName"));
@@ -86,10 +67,37 @@ public class CatalogController {
         MedPrice.setCellValueFactory(new PropertyValueFactory<>("medicinePrice"));
         MedQuant.setCellValueFactory(new PropertyValueFactory<>("medicineQuantity"));
 
+        // Add Buy button to each row
+        buyColumn.setCellFactory(new Callback<TableColumn<MedicinesData, Void>, TableCell<MedicinesData, Void>>() {
+            @Override
+            public TableCell<MedicinesData, Void> call(final TableColumn<MedicinesData, Void> param) {
+                final TableCell<MedicinesData, Void> cell = new TableCell<MedicinesData, Void>() {
+                    private final Button btn = new Button("Buy");
+
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                            MedicinesData data = getTableView().getItems().get(getIndex());
+                            performBuyAction(data);
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        });
+
         loadMedicinesData();
         setupNotificationPopup();
         pane.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
-
     }
 
     private void loadMedicinesData() {
@@ -120,28 +128,30 @@ public class CatalogController {
 
         MedTable.setItems(filteredData);
         noResultsOverlay.setVisible(filteredData.isEmpty());
-
-
-    }
-    private Popup popup;
-
-    private void setupNotificationPopup() {
-        popup = new Popup();
-        Label messageLabel = new Label(getHealthTips());
-        messageLabel.setFont(new Font("Segoe UI", 18));
-        messageLabel.setTextFill(Color.WHITE);
-        messageLabel.setWrapText(true);
-
-        VBox layout = new VBox(messageLabel);
-        layout.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); -fx-padding: 20; -fx-background-radius: 10;");
-        layout.setPrefSize(300, 200);
-
-        popup.getContent().add(layout);
-        popup.setAutoHide(true);
     }
 
-    private String getHealthTips() {
-        return "Remember to take your medication at 8 PM tonight.";
+    @FXML
+    private void performBuyAction(MedicinesData data) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/BuyPage.fxml"));
+            Pane cartPage = loader.load();
+            pane.getChildren().setAll(cartPage);
+        } catch (IOException e) {
+            System.out.println("Error loading cart page: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void ButtonCart(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/CartPage.fxml"));
+            Pane cartPage = loader.load();
+            pane.getChildren().setAll(cartPage);
+        } catch (IOException e) {
+            System.out.println("Error loading cart page: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -154,9 +164,23 @@ public class CatalogController {
             popup.hide();
         }
     }
-    private void hideNoResultsOverlay() {
-        noResultsOverlay.setVisible(false);
+
+    private void setupNotificationPopup() {
+        popup = new Popup();
+        Label messageLabel = new Label(getHealthTips());
+        messageLabel.setFont(new Font("Segoe UI", 16));
+        messageLabel.setTextFill(Color.WHITE);
+        messageLabel.setWrapText(true);
+
+        VBox layout = new VBox(messageLabel);
+        layout.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); -fx-padding: 20; -fx-background-radius: 18;");
+        layout.setPrefSize(300, 200);
+
+        popup.getContent().add(layout);
+        popup.setAutoHide(true);
     }
 
-
+    private String getHealthTips() {
+        return "Remember to take your medication at 8 PM.";
+    }
 }
