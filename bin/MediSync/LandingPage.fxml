@@ -45,7 +45,7 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Pane>
-                  <HBox prefHeight="63.0" prefWidth="352.0">
+                  <HBox fx:id="homeHBox" prefHeight="63.0" prefWidth="352.0">
                      <children>
                         <ImageView fitHeight="42.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -55,7 +55,7 @@
                               <Insets left="20.0" top="40.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Button fx:id="Home" mnemonicParsing="false" onAction="#ButtonHome" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: #0D134B;" text="Home" textFill="WHITE">
+                        <Button fx:id="Home" mnemonicParsing="false" onAction="#ButtonHome" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #0D134B;" text="Home" textFill="WHITE">
                            <font>
                               <Font name="Segoe UI" size="24.0" />
                            </font>
@@ -65,7 +65,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="71.0" prefWidth="352.0">
+                  <HBox fx:id="catalogHBox" prefHeight="71.0" prefWidth="352.0">
                      <children>
                         <ImageView fitHeight="48.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -75,7 +75,7 @@
                               <Insets left="20.0" top="40.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Button fx:id="Catalog" mnemonicParsing="false" onAction="#ButtonCatalog" prefHeight="45.0" prefWidth="175.0" style="-fx-background-color: #0D134B;" text="Catalog" textFill="WHITE">
+                        <Button fx:id="Catalog" mnemonicParsing="false" onAction="#ButtonCatalog" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #0D134B;" text="Medicines" textFill="WHITE">
                            <font>
                               <Font name="Segoe UI" size="24.0" />
                            </font>
@@ -85,17 +85,17 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="0.0" prefWidth="352.0">
+                  <HBox fx:id="healthTipsHBox" prefHeight="0.0" prefWidth="352.0">
                      <children>
                         <ImageView fitHeight="48.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Images/tips.png" />
                            </image>
                            <HBox.margin>
-                              <Insets left="25.0" top="40.0" />
+                              <Insets left="30.0" top="40.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Button fx:id="HealthTips" mnemonicParsing="false" onAction="#ButtonHealthTips" prefHeight="45.0" prefWidth="215.0" style="-fx-background-color: #0D134B;" text="Health Tips" textFill="WHITE">
+                        <Button fx:id="HealthTips" mnemonicParsing="false" onAction="#ButtonHealthTips" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #0D134B;" text="Health Tips" textFill="WHITE">
                            <font>
                               <Font name="Segoe UI" size="24.0" />
                            </font>
@@ -105,7 +105,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="352.0">
+                  <HBox fx:id="consultHBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="352.0">
                      <children>
                         <ImageView fitHeight="48.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -115,7 +115,7 @@
                               <Insets left="25.0" top="40.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Button fx:id="Consult" mnemonicParsing="false" onAction="#ButtonConsult" prefHeight="45.0" prefWidth="172.0" style="-fx-background-color: #0D134B;" text="Consult" textFill="WHITE">
+                        <Button fx:id="Consult" mnemonicParsing="false" onAction="#ButtonConsult" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #0D134B;" text="Consult" textFill="WHITE">
                            <font>
                               <Font name="Segoe UI" size="24.0" />
                            </font>
@@ -125,7 +125,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="69.0" prefWidth="352.0">
+                  <HBox fx:id="profileHBox" prefHeight="69.0" prefWidth="352.0">
                      <children>
                         <ImageView fitHeight="48.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -135,7 +135,7 @@
                               <Insets left="25.0" top="45.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Button fx:id="Profile" mnemonicParsing="false" onAction="#ButtonProfile" prefHeight="45.0" prefWidth="137.0" style="-fx-background-color: #0D134B;" text="Profile" textFill="WHITE">
+                        <Button fx:id="Profile" mnemonicParsing="false" onAction="#ButtonProfile" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #0D134B;" text="Profile" textFill="WHITE">
                            <font>
                               <Font name="Segoe UI" size="24.0" />
                            </font>
@@ -148,7 +148,7 @@
                         <Insets top="350.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox prefHeight="70.0" prefWidth="352.0">
+                  <HBox fx:id="logoutHBox" prefHeight="70.0" prefWidth="352.0">
                      <children>
                         <ImageView fitHeight="48.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -158,7 +158,7 @@
                               <Insets left="25.0" top="45.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Button fx:id="Logout" mnemonicParsing="false" onAction="#ButtonLogout" prefHeight="45.0" prefWidth="156.0" style="-fx-background-color: #0D134B;" text="Logout" textFill="WHITE">
+                        <Button fx:id="Logout" mnemonicParsing="false" onAction="#ButtonLogout" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #0D134B;" text="Logout" textFill="WHITE">
                            <font>
                               <Font name="Segoe UI" size="24.0" />
                            </font>

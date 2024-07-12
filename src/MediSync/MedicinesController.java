@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -22,6 +24,8 @@ import MediSync.MediSync_Model.MedicinesData;
 
 import java.io.FileReader;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 
@@ -50,6 +54,8 @@ public class MedicinesController {
     @FXML
     private Pane noResultsOverlay; // The overlay pane for no results
 
+    private ObservableList<MedicinesData> allMedicines;
+
     public void initialize() {
         MedName.setCellValueFactory(new PropertyValueFactory<>("medicineName"));
         MedForm.setCellValueFactory(new PropertyValueFactory<>("medicineForm"));
@@ -58,8 +64,17 @@ public class MedicinesController {
         MedPrice.setCellValueFactory(new PropertyValueFactory<>("medicinePrice"));
         MedQuant.setCellValueFactory(new PropertyValueFactory<>("medicineQuantity"));
 
-        loadMedicinesData();
+        searchBar.setOnKeyPressed(this::handleEnterPressed);
+        searchButton.setOnAction(this::performSearch);
         pane.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+
+        loadMedicinesData();
+    }
+
+    private void handleEnterPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            performSearch(null);
+        }
     }
 
     private void loadMedicinesData() {
@@ -70,8 +85,8 @@ public class MedicinesController {
             xstream.alias("list", List.class);
             FileReader fileReader = new FileReader("src/MediSync/MediSync_Model/medicines.xml");
             List<MedicinesData> medicinesList = (List<MedicinesData>) xstream.fromXML(fileReader);
-            ObservableList<MedicinesData> data = FXCollections.observableArrayList(medicinesList);
-            MedTable.setItems(data);
+            allMedicines = FXCollections.observableArrayList(medicinesList);
+            MedTable.setItems(allMedicines);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -80,13 +95,13 @@ public class MedicinesController {
     @FXML
     private void performSearch(ActionEvent event) {
         String searchQuery = searchBar.getText().trim().toLowerCase();
-        ObservableList<MedicinesData> filteredData = FXCollections.observableArrayList();
 
-        for (MedicinesData medicine : MedTable.getItems()) {
-            if (medicine.getMedicineName().toLowerCase().contains(searchQuery)) {
-                filteredData.add(medicine);
-            }
-        }
+        // Reload original data before filtering
+        MedTable.setItems(allMedicines);
+
+        ObservableList<MedicinesData> filteredData = allMedicines.stream()
+                                                                .filter(medicine -> medicine.getMedicineName().toLowerCase().startsWith(searchQuery))
+                                                                .collect(Collectors.toCollection(FXCollections::observableArrayList));
 
         MedTable.setItems(filteredData);
         noResultsOverlay.setVisible(filteredData.isEmpty());

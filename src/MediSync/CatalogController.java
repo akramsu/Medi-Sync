@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -58,6 +60,7 @@ public class CatalogController {
     private Pane noResultsOverlay; // The overlay pane for no results
 
     private Popup popup;
+    private ObservableList<MedicinesData> originalData;
 
     public void initialize() {
         MedName.setCellValueFactory(new PropertyValueFactory<>("medicineName"));
@@ -67,7 +70,7 @@ public class CatalogController {
         MedPrice.setCellValueFactory(new PropertyValueFactory<>("medicinePrice"));
         MedQuant.setCellValueFactory(new PropertyValueFactory<>("medicineQuantity"));
 
-        // Add Buy button to each row
+        // Add Buy button to each row with custom design
         buyColumn.setCellFactory(new Callback<TableColumn<MedicinesData, Void>, TableCell<MedicinesData, Void>>() {
             @Override
             public TableCell<MedicinesData, Void> call(final TableColumn<MedicinesData, Void> param) {
@@ -79,6 +82,14 @@ public class CatalogController {
                             MedicinesData data = getTableView().getItems().get(getIndex());
                             performBuyAction(data);
                         });
+                        btn.setStyle(
+                            "-fx-background-color: white; " +
+                            "-fx-text-fill: darkblue; " +
+                            "-fx-border-color: darkblue; " +
+                            "-fx-border-width: 2px; " +
+                            "-fx-background-radius: 10px; " +
+                            "-fx-border-radius: 10px;"
+                        );
                     }
 
                     @Override
@@ -98,6 +109,12 @@ public class CatalogController {
         loadMedicinesData();
         setupNotificationPopup();
         pane.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+
+        // Add event handler for Enter key on search bar
+        searchBar.setOnKeyPressed(this::handleKeyPressed);
+
+        // Add action event handler for search button
+        searchButton.setOnAction(this::performSearch);
     }
 
     private void loadMedicinesData() {
@@ -108,8 +125,8 @@ public class CatalogController {
             xstream.alias("list", List.class);
             FileReader fileReader = new FileReader("src/MediSync/MediSync_Model/medicines.xml");
             List<MedicinesData> medicinesList = (List<MedicinesData>) xstream.fromXML(fileReader);
-            ObservableList<MedicinesData> data = FXCollections.observableArrayList(medicinesList);
-            MedTable.setItems(data);
+            originalData = FXCollections.observableArrayList(medicinesList);
+            MedTable.setItems(originalData);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -120,8 +137,11 @@ public class CatalogController {
         String searchQuery = searchBar.getText().trim().toLowerCase();
         ObservableList<MedicinesData> filteredData = FXCollections.observableArrayList();
 
-        for (MedicinesData medicine : MedTable.getItems()) {
-            if (medicine.getMedicineName().toLowerCase().contains(searchQuery)) {
+        // Reload original data before filtering
+        MedTable.setItems(originalData);
+
+        for (MedicinesData medicine : originalData) {
+            if (medicine.getMedicineName().toLowerCase().startsWith(searchQuery)) {
                 filteredData.add(medicine);
             }
         }
@@ -130,14 +150,25 @@ public class CatalogController {
         noResultsOverlay.setVisible(filteredData.isEmpty());
     }
 
+    private void handleKeyPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            performSearch(new ActionEvent());
+        }
+    }
+
     @FXML
     private void performBuyAction(MedicinesData data) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/BuyPage.fxml"));
-            Pane cartPage = loader.load();
-            pane.getChildren().setAll(cartPage);
+            Pane buyPage = loader.load();
+
+            // Get the controller of the BuyPage
+            BuyController buyController = loader.getController();
+            buyController.setMedicineDetails(data);
+
+            pane.getChildren().setAll(buyPage);
         } catch (IOException e) {
-            System.out.println("Error loading cart page: " + e.getMessage());
+            System.out.println("Error loading Buy page: " + e.getMessage());
             e.printStackTrace();
         }
     }

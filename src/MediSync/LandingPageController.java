@@ -80,13 +80,13 @@ public class LandingPageController {
     @FXML
     private Button notification;
 
-
     private Popup popup;
-
 
     private XYChart.Series<String, Number> series;
     private LocalDate startDate;
     private Random random;
+
+    private Button selectedButton;
 
     @FXML
     public void initialize() {
@@ -111,6 +111,9 @@ public class LandingPageController {
 
         setupNotificationPopup();
 
+        // Initialize selected button effect
+        initializeButtonEffects();
+        applyButtonStyle(Home);
     }
 
     private long dateToNumber(LocalDate date) {
@@ -121,28 +124,74 @@ public class LandingPageController {
         series.getData().add(new XYChart.Data<>(date, value));
     }
 
+    private void initializeButtonEffects() {
+        // Set initial style for buttons
+        Home.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); -fx-text-fill: white;");
+        Catalog.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
+        HealthTips.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
+        Consult.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
+        Profile.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
+        Logout.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
+
+        selectedButton = Home;
+
+        // Add hover effect
+        addHoverEffect(Home);
+        addHoverEffect(Catalog);
+        addHoverEffect(HealthTips);
+        addHoverEffect(Consult);
+        addHoverEffect(Profile);
+        addHoverEffect(Logout);
+    }
+
+    private void addHoverEffect(Button button) {
+        button.setOnMouseEntered(e -> {
+            if (button != selectedButton) {
+                button.setStyle("-fx-background-color: #757DE8; -fx-text-fill: white; -fx-background-radius: 10px; -fx-cursor: hand;");
+            }
+        });
+
+        button.setOnMouseExited(e -> {
+            if (button != selectedButton) {
+                button.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
+            }
+        });
+    }
+
+    private void applyButtonStyle(Button button) {
+        if (selectedButton != null) {
+            // Revert style of previously selected button
+            selectedButton.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
+        }
+        // Apply style to currently selected button
+        button.setStyle(
+            "-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); " +
+            "-fx-text-fill: white; " +
+            "-fx-background-radius: 30px; " +
+            "-fx-border-color: #283593; " +
+            "-fx-border-width: 2px; " +
+            "-fx-border-radius: 30px; " +
+            "-fx-effect: dropshadow(gaussian, #283593, 10, 0.5, 0, 0);"
+        );
+        selectedButton = button;
+    }
+
     @FXML
     private void ButtonHome(ActionEvent event) {
-        System.out.println("Home Button Clicked");
-        // try {
-            // FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/LandingPage.fxml")); 
-            // Pane homePage = loader.load();
-            mainPane.setCenter(pane); 
-        // } catch (IOException e) {
-        //     System.out.println("Error loading logout page: " + e.getMessage());
-        //     e.printStackTrace(); 
-        // }    
+        mainPane.setCenter(pane);
+        applyButtonStyle(Home);
     }
 
     @FXML
     private void ButtonCatalog(ActionEvent event) {
-        System.out.println("Logout Button Clicked");
+        System.out.println("Catalog Button Clicked");
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/CatalogPage.fxml"));
             Pane catalogPage = loader.load();
             mainPane.setCenter(catalogPage);
+            applyButtonStyle(Catalog);
         } catch (IOException e) {
-            System.out.println("Error loading logout page: " + e.getMessage());
+            System.out.println("Error loading catalog page: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -154,6 +203,7 @@ public class LandingPageController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/HealthTips.fxml"));
             ScrollPane healthTipsPage = loader.load();
             mainPane.setCenter(healthTipsPage);
+            applyButtonStyle(HealthTips);
         } catch (IOException e) {
             System.out.println("Error loading health tips page: " + e.getMessage());
             e.printStackTrace();
@@ -167,8 +217,9 @@ public class LandingPageController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/ConsultPage.fxml"));
             Pane consultPage = loader.load();
             mainPane.setCenter(consultPage);
+            applyButtonStyle(Consult);
         } catch (IOException e) {
-            System.out.println("Error loading logout page: " + e.getMessage());
+            System.out.println("Error loading consult page: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -180,10 +231,11 @@ public class LandingPageController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/ProfilePage.fxml"));
             Pane profilePage = loader.load();
             mainPane.setCenter(profilePage);
+            applyButtonStyle(Profile);
         } catch (IOException e) {
-            System.out.println("Error loading logout page: " + e.getMessage());
+            System.out.println("Error loading profile page: " + e.getMessage());
             e.printStackTrace();
-        }  
+        }
     }
 
     @FXML
@@ -193,13 +245,14 @@ public class LandingPageController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/LogoutPage.fxml")); // Correct path to FXML
             Pane logoutPage = loader.load();
             mainPane.setCenter(logoutPage); // Setting the logout page at the center
+            applyButtonStyle(Logout);
         } catch (IOException e) {
             System.out.println("Error loading logout page: " + e.getMessage());
             e.printStackTrace(); // Print stack trace for detailed debug information
         }
     }
 
-        private void setupNotificationPopup() {
+    private void setupNotificationPopup() {
         popup = new Popup();
         Label messageLabel = new Label(getHealthTips());
         messageLabel.setFont(new Font("Segoe UI", 18));
@@ -228,6 +281,4 @@ public class LandingPageController {
             popup.hide();
         }
     }
-
-
 }

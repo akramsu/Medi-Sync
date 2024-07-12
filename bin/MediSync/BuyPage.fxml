@@ -162,7 +162,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button layoutX="204.0" layoutY="10.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="77.0" style="-fx-background-color: #ffffff;">
+                              <Button fx:id="master" layoutX="204.0" layoutY="10.0" mnemonicParsing="false" onAction="#masterbt" prefHeight="52.0" prefWidth="77.0" style="-fx-background-color: #ffffff;">
                                  <graphic>
                                     <ImageView fitHeight="55.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

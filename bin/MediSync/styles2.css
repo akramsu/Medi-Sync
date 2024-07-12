@@ -1,28 +1,17 @@
-.root {
-    -fx-font-family: 'Inter', sans-serif;
-}
-
-.header-title {
-    -fx-font-size: 20px;
-    -fx-text-fill: white;
-    -fx-background-color: #6366f1; /* Indigo-500 */
-    -fx-padding: 10px;
-}
-
 .button {
-    -fx-background-color: #6366f1; /* Indigo-500 */
-    -fx-text-fill: white;
-    -fx-padding: 10px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #0d134b;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
 }
 
-.button:hover {
-    -fx-background-color: #4f46e5; /* Indigo-600 */
+.button:pressed {
+    -fx-background-color: #E0E0E0;
 }
 
-.radio-button .label {
-    -fx-text-fill: #333;
-}
-
-.radio-button:selected .label {
-    -fx-text-fill: #6366f1; /* Indigo-500 */
+.active-button {
+    -fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5);
+    -fx-background-radius: 10px;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 2px;
 }

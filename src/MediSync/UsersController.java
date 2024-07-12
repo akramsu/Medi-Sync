@@ -55,6 +55,7 @@ public class UsersController implements Initializable {
         userAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
 
         searchBar.setOnKeyPressed(this::handleEnterPressed);
+        searchButton.setOnAction(this::performSearch);
         pane.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
 
         loadUserData();
@@ -74,9 +75,13 @@ public class UsersController implements Initializable {
 
     @FXML
     public void performSearch(ActionEvent event) {
-        String searchQuery = searchBar.getText().trim();
+        String searchQuery = searchBar.getText().trim().toLowerCase();
+
+        // Reload original data before filtering
+        loadUserData();
+
         ObservableList<UserData> filteredData = allUsers.stream()
-                                                        .filter(user -> user.getEmail().toLowerCase().contains(searchQuery.toLowerCase()))
+                                                        .filter(user -> user.getEmail().toLowerCase().startsWith(searchQuery))
                                                         .collect(Collectors.toCollection(FXCollections::observableArrayList));
         if (filteredData.isEmpty()) {
             resultText.setText("No similar results found.");

@@ -123,7 +123,7 @@
                   </Label>
                </children>
             </HBox>
-            <Button fx:id="editButton" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="65.0" prefWidth="217.0" style="-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); -fx-background-radius: 30px;" text="Back" textFill="WHITE">
+            <Button fx:id="editButton" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="65.0" prefWidth="217.0" style="-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); -fx-background-radius: 30px;" text="Edit" textFill="WHITE">
                <font>
                   <Font name="Segoe UI" size="24.0" />
                </font>

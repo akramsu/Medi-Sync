@@ -17,6 +17,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.scene.Node;
@@ -118,6 +120,19 @@ public class SignUpController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         genderBox.getItems().addAll(choices);
         genderBox.setOnAction(this::getGender);
+
+        // Add event handlers for Enter key
+        email.setOnKeyPressed(this::handleKeyPressed);
+        password.setOnKeyPressed(this::handleKeyPressed);
+        phoneNumber.setOnKeyPressed(this::handleKeyPressed);
+        address.setOnKeyPressed(this::handleKeyPressed);
+        date.setOnKeyPressed(this::handleKeyPressed);
+    }
+
+    private void handleKeyPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            signUpButton.fire();
+        }
     }
 
     private boolean isValidEmail(String email) {
@@ -137,5 +152,4 @@ public class SignUpController implements Initializable {
         alert.setHeaderText(null);
         alert.showAndWait();
     }
-
 }

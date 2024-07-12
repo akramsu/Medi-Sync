@@ -28,6 +28,7 @@ public class OrderDataManager {
             "java.util.ArrayList"
         });
         xstream.alias("order", OrderData.class);
+        xstream.alias("list", List.class);
     }
 
     public void addOrder(OrderData order) {
