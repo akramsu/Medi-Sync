@@ -1,82 +1,78 @@
 package MediSync;
 
-import java.awt.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import MediSync.MediSync_Model.CurrentUser;
+import MediSync.MediSync_Model.OrderData;
+import MediSync.MediSync_Model.OrderDataManager;
+import MediSync.MediSync_Model.UserData;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-
-public class Cart implements Initializable{
+public class Cart implements Initializable {
 
     @FXML
-    private Pane pane;
+    private VBox vBox;
 
-    @FXML
-    private Label medicineLabel;
-
-    @FXML
-    private TextField medicineName;
-
-    @FXML
-    private TextField description;
-
-    @FXML
-    private Label quantity;
-
-    @FXML
-    private Spinner<Integer> spQuantity;
-    int currentValue;
-    @FXML
-    private ChoiceBox<String> cbForm;
-    private String[] choices = {"Bank Transfer", "PayPal","Visa","Master card"};
-
-    // @FXML
-    // private Button buy;
-
-    // @FXML
-    // private void buybutton(ActionEvent event) {
-    //     System.out.println("button buy clicked");
-    // }
+    private OrderDataManager orderDataManager;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        cbForm.getItems().addAll(choices);
-
-		
-        	SpinnerValueFactory<Integer> valueFactory = 
-        			new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10);
-            
-        	valueFactory.setValue(1);
-            
-        	spQuantity.setValueFactory(valueFactory);
-            
-        	currentValue = spQuantity.getValue();
-            
-        	quantity.setText(Integer.toString(currentValue));
-            
-        	spQuantity.valueProperty().addListener(new ChangeListener<Integer>() {       
-
-        		@Override
-        		public void changed(ObservableValue<? extends Integer> arg0, Integer arg1, Integer arg2) {
-                    
-        			currentValue = spQuantity.getValue();
-                    
-        			quantity.setText(Integer.toString(currentValue));
-                    
-        		}
-        	});	
+        orderDataManager = new OrderDataManager();
+        displayLatestPurchase();
     }
 
+    private void displayLatestPurchase() {
+        UserData currentUser = CurrentUser.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            OrderData latestOrder = getLatestOrder(currentUser.getEmail());
+            if (latestOrder != null) {
+                showOrderDetails(latestOrder);
+            } else {
+                showNoPurchasesMessage();
+            }
+        } else {
+            showNoPurchasesMessage();
+        }
+    }
+
+    private OrderData getLatestOrder(String email) {
+        return orderDataManager.getAllOrders().stream()
+                .filter(order -> order.getUserEmail().equals(email))
+                .reduce((first, second) -> second) // Get the last order
+                .orElse(null);
+    }
+
+    private void showOrderDetails(OrderData order) {
+        vBox.getChildren().clear();
+
+        Label titleLabel = new Label("Latest Purchase Details");
+        titleLabel.setStyle("-fx-text-fill: #ffffff; -fx-font-size: 36px; -fx-font-weight: bold;");
+
+        Label medicineName = new Label("Medicine: " + order.getMedicineName());
+        Label quantity = new Label("Quantity: " + order.getQuantity());
+        Label price = new Label("Total Price: $" + order.getTotalPrice());
+        Label orderDate = new Label("Date: " + order.getOrderDate().toString());
+
+        styleLabel(medicineName);
+        styleLabel(quantity);
+        styleLabel(price);
+        styleLabel(orderDate);
+
+        vBox.getChildren().addAll(titleLabel, medicineName, quantity, price, orderDate);
+    }
+
+    private void showNoPurchasesMessage() {
+        vBox.getChildren().clear();
+        Label noPurchasesLabel = new Label("No purchases have been made.");
+        styleLabel(noPurchasesLabel);
+        vBox.getChildren().add(noPurchasesLabel);
+    }
+
+    private void styleLabel(Label label) {
+        label.setStyle("-fx-text-fill: #ffffff; -fx-font-size: 24px;");
+    }
 }

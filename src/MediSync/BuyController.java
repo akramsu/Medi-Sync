@@ -7,9 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import MediSync.MediSync_Model.MedicinesData;
-import MediSync.MediSync_Model.OrderData;
-import MediSync.MediSync_Model.OrderDataManager;
+import MediSync.MediSync_Model.*;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -28,9 +26,9 @@ public class BuyController implements Initializable {
     @FXML private DatePicker dp;
     @FXML private Label quantity;
     @FXML private Label price;
+    @FXML private Label details;
 
     private OrderDataManager orderDataManager;
-    private String userEmail = "user@example.com"; // Placeholder email, update with actual user email in production
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -47,11 +45,24 @@ public class BuyController implements Initializable {
         double totalPriceValue = Double.parseDouble(price.getText());
         LocalDate orderDate = LocalDate.now();
 
-        OrderData order = new OrderData(orderId, userEmail, medicineNameText, quantityValue, totalPriceValue, orderDate);
-        orderDataManager.addOrder(order);
+        // Retrieve the current user
+        CurrentUser currentUserInstance = CurrentUser.getInstance();
+        UserData currentUser = currentUserInstance.getCurrentUser();
 
-        // Show confirmation or navigate to another page
-        System.out.println("Order placed successfully.");
+        if (currentUser != null) {
+            String userEmail = currentUser.getEmail();
+
+            OrderData order = new OrderData(orderId, userEmail, medicineNameText, quantityValue, totalPriceValue, orderDate);
+            orderDataManager.addOrder(order);
+
+            // Show confirmation or navigate to another page
+            System.out.println("Order placed successfully for user: " + userEmail);
+
+            // Change the text in the details label
+            details.setText("The payment process is successfully done. Thank you!");
+        } else {
+            System.out.println("No user is currently logged in.");
+        }
     }
 
     @FXML

@@ -130,6 +130,11 @@
                            <font>
                               <Font name="Segoe UI Bold" size="36.0" />
                            </font></Label>
+                        <Label fx:id="details" alignment="CENTER" prefHeight="29.0" prefWidth="552.0" text="Choose the payment method" textFill="#0d134b" wrapText="true">
+                           <font>
+                              <Font name="Segoe UI" size="24.0" />
+                           </font>
+                        </Label>
                         <HBox prefHeight="60.0" prefWidth="505.0">
                            <children>
                               <Button fx:id="visa" mnemonicParsing="false" onAction="#visabt" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: #ffffff;">
@@ -193,7 +198,7 @@
                               <Font name="Segoe UI" size="24.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="70.0" />
+                              <Insets top="30.0" />
                            </VBox.margin>
                         </Button>
                             </children>
