@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import MediSync.MediSync_Model.CurrentUser;
 import MediSync.MediSync_Model.UserData;
 import MediSync.MediSync_Model.UserDataManager;
 import javafx.fxml.FXML;
@@ -36,21 +37,25 @@ public class SigninController implements Initializable {
 
         if (user.equals("admin") && pass.equals("admin")) {
             loadScene(event, "AdminPage");
-        } else if (isValidUser(user, pass)) {
-            loadScene(event, "LandingPage");
         } else {
-            showAlert(Alert.AlertType.WARNING, "Signin Error", "Invalid username or password.");
+            UserData validUser = getValidUser(user, pass);
+            if (validUser != null) {
+                CurrentUser.getInstance().setCurrentUser(validUser);
+                loadScene(event, "LandingPage");
+            } else {
+                showAlert(Alert.AlertType.WARNING, "Signin Error", "Invalid username or password.");
+            }
         }
     }
 
-    private boolean isValidUser(String user, String pass) {
+    private UserData getValidUser(String user, String pass) {
         List<UserData> users = userDataManager.getAllUsers();
         for (UserData u : users) {
             if (u.getEmail().equals(user) && u.getPassword().equals(pass)) {
-                return true;
+                return u;
             }
         }
-        return false;
+        return null;
     }
 
     private void loadScene(ActionEvent event, String pageName) {

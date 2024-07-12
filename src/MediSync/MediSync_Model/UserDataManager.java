@@ -37,6 +37,11 @@ public class UserDataManager {
         saveUserData();
     }
 
+    public void updateUser(UserData user) {
+        userDataArray.addUserData(user); // addUserData will update if user exists
+        saveUserData();
+    }
+
     public List<UserData> getAllUsers() {
         return userDataArray.getCollectedData();
     }

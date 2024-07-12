@@ -1,10 +1,12 @@
 package MediSync;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import MediSync.MediSync_Model.CurrentUser;
 import MediSync.MediSync_Model.UserData;
-import MediSync.MediSync_Model.UserDataManager;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -20,9 +22,10 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 public class ProfileController implements Initializable {
-    private UserDataManager userDataManager = new UserDataManager();
     private OpenScene openScene = new OpenScene();
 
+    @FXML
+    private Pane pane;
     @FXML
     private Label emailLabel;
 
@@ -50,12 +53,10 @@ public class ProfileController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Retrieve the current user data (assuming the last user added is the one to display)
-        if (!userDataManager.getAllUsers().isEmpty()) {
-            currentUser = userDataManager.getAllUsers().get(userDataManager.getAllUsers().size() - 1);
-            displayUserData();
-            setupNotificationPopup();
-        }
+        // Retrieve the current user data
+        currentUser = CurrentUser.getInstance().getCurrentUser();
+        displayUserData();
+        setupNotificationPopup();
     }
 
     private void displayUserData() {
@@ -70,15 +71,13 @@ public class ProfileController implements Initializable {
 
     @FXML
     private void handleEditButton(ActionEvent event) {
-        Pane page = openScene.getPane("LandingPage");
-        if (page != null) {
-            Scene scene = new Scene(page);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.setFullScreen(true);
-            stage.show();
-        } else {
-            System.out.println("Failed to load the landing page.");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/EditProfile.fxml"));
+            Pane editPane = loader.load();
+            pane.getChildren().setAll(editPane);
+        } catch (IOException e) {
+            System.out.println("Error loading cart page: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 

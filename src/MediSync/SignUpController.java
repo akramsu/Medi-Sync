@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
+import MediSync.MediSync_Model.CurrentUser;
 import MediSync.MediSync_Model.UserData;
 import MediSync.MediSync_Model.UserDataManager;
 import javafx.fxml.FXML;
@@ -102,6 +103,9 @@ public class SignUpController implements Initializable {
 
         // Add user using UserDataManager
         userDataManager.addUser(userData);
+
+        // Set the current user
+        CurrentUser.getInstance().setCurrentUser(userData);
 
         // Load the landing page
         Pane page = openScene.getPane("LandingPage");

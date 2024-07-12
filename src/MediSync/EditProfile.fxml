@@ -11,119 +11,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="930.0" prefWidth="1568.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MediSync.EditProfileController">
-   <children>
-      <Label layoutX="541.0" layoutY="18.0" prefHeight="156.0" prefWidth="579.0" text="Edit Profile" textAlignment="CENTER" textFill="#283593">
-         <font>
-            <Font name="Segoe UI Bold" size="64.0" />
-         </font>
-         <padding>
-            <Insets top="30.0" />
-         </padding>
-      </Label>
-      <VBox layoutX="149.0" layoutY="200.0" prefHeight="600.0" prefWidth="800.0" spacing="20.0">
-         <children>
-            <HBox spacing="20.0">
-               <children>
-                  <Label text="Email" textFill="#1A237E">
-                     <font>
-                        <Font name="Segoe UI" size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="emailTextField" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #E3F2FD; -fx-background-radius: 10px;">
-                     <font>
-                        <Font name="Segoe UI" size="24.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox spacing="20.0">
-               <children>
-                  <Label text="Password" textFill="#1A237E">
-                     <font>
-                        <Font name="Segoe UI" size="24.0" />
-                     </font>
-                  </Label>
-                  <PasswordField fx:id="passwordTextField" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #E3F2FD; -fx-background-radius: 10px;">
-                     <font>
-                        <Font name="Segoe UI" size="24.0" />
-                     </font>
-                  </PasswordField>
-               </children>
-            </HBox>
-            <HBox spacing="20.0">
-               <children>
-                  <Label text="Phone Number" textFill="#1A237E">
-                     <font>
-                        <Font name="Segoe UI" size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="phoneNumberTextField" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #E3F2FD; -fx-background-radius: 10px;">
-                     <font>
-                        <Font name="Segoe UI" size="24.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox spacing="20.0">
-               <children>
-                  <Label text="Date of Birth" textFill="#1A237E">
-                     <font>
-                        <Font name="Segoe UI" size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="dateOfBirthTextField" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #E3F2FD; -fx-background-radius: 10px;">
-                     <font>
-                        <Font name="Segoe UI" size="24.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox spacing="20.0">
-               <children>
-                  <Label text="Gender" textFill="#1A237E">
-                     <font>
-                        <Font name="Segoe UI" size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="genderTextField" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #E3F2FD; -fx-background-radius: 10px;">
-                     <font>
-                        <Font name="Segoe UI" size="24.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox spacing="20.0">
-               <children>
-                  <Label text="Address" textFill="#1A237E">
-                     <font>
-                        <Font name="Segoe UI" size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="addressTextField" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #E3F2FD; -fx-background-radius: 10px;">
-                     <font>
-                        <Font name="Segoe UI" size="24.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </HBox>
-            <Button fx:id="saveButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #283593; -fx-background-radius: 30px;" text="Save" textFill="WHITE" onAction="#handleSaveButton">
-               <font>
-                  <Font name="Segoe UI" size="24.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="30.0" />
-               </VBox.margin>
-            </Button>
-         </children>
-         <padding>
-            <Insets top="30.0" />
-         </padding>
-      </VBox>
-      <Line endX="1490.0" layoutX="80.0" layoutY="187.0" startX="-50.0" stroke="#283593" strokeWidth="4.0" />
-   </children>
-</Pane>
-
 <!-- <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
@@ -249,3 +136,123 @@
       <Line endX="1490.0" layoutX="80.0" layoutY="187.0" startX="-50.0" stroke="#283593" strokeWidth="4.0" />
    </children>
 </Pane> -->
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="930.0" prefWidth="1568.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MediSync.EditProfileController">
+   <children>
+      <VBox layoutX="149.0" layoutY="200.0" prefHeight="600.0" prefWidth="800.0" spacing="20.0">
+         <children>
+            <HBox spacing="20.0">
+               <children>
+                  <Label prefHeight="29.0" prefWidth="167.0" text="Email" textFill="#1A237E">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="emailTextField" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #E3F2FD; -fx-background-radius: 30px; -fx-border-radius: 30px; -fx-border-color: #0d134b;">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox spacing="20.0">
+               <children>
+                  <Label prefHeight="29.0" prefWidth="162.0" text="Password" textFill="#1A237E">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="passwordTextField" prefHeight="47.0" prefWidth="284.0" style="-fx-background-color: #E3F2FD; -fx-background-radius: 30px; -fx-border-radius: 30px; -fx-border-color: #0d134b;">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </PasswordField>
+               </children>
+            </HBox>
+            <HBox spacing="20.0">
+               <children>
+                  <Label text="Phone Number" textFill="#1A237E">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="phoneNumberTextField" prefHeight="47.0" prefWidth="288.0" style="-fx-background-color: #E3F2FD; -fx-background-radius: 30px; -fx-border-radius: 30px; -fx-border-color: #0d134b;">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox spacing="20.0">
+               <children>
+                  <Label prefHeight="29.0" prefWidth="161.0" text="Date of Birth" textFill="#1A237E">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="dateOfBirthTextField" prefHeight="47.0" prefWidth="258.0" style="-fx-background-color: #E3F2FD; -fx-background-radius: 30px; -fx-border-radius: 30px; -fx-border-color: #0d134b;">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox spacing="20.0">
+               <children>
+                  <Label prefHeight="29.0" prefWidth="158.0" text="Gender" textFill="#1A237E">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="genderTextField" prefHeight="47.0" prefWidth="208.0" style="-fx-background-color: #E3F2FD; -fx-background-radius: 30px; -fx-border-radius: 30px; -fx-border-color: #0d134b;">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox spacing="20.0">
+               <children>
+                  <Label prefHeight="29.0" prefWidth="160.0" text="Address" textFill="#1A237E">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="addressTextField" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #E3F2FD; -fx-background-radius: 30px; -fx-border-radius: 30px; -fx-border-color: #0d134b;">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="65.0" prefWidth="192.0" style="-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); -fx-background-radius: 30PX;" text="Save" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="70.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets top="30.0" />
+         </padding>
+      </VBox>
+      <Line endX="1490.0" layoutX="80.0" layoutY="187.0" startX="-80.0" stroke="#0d134b" strokeWidth="4.0" />
+      <Pane prefHeight="186.0" prefWidth="1568.0" style="-fx-background-color: #E3F2FD;">
+         <children>
+            <Label alignment="CENTER" layoutX="6.0" layoutY="9.0" prefHeight="156.0" prefWidth="1557.0" text="Edit Profile" textAlignment="CENTER" textFill="#0d134b">
+               <font>
+                  <Font name="Segoe UI Bold" size="64.0" />
+               </font>
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</Pane>
