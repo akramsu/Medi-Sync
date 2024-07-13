@@ -1,0 +1,21 @@
+<html>
+<head>
+    <script>
+        // This script runs before loading the external script
+        console.log("Trying to load external script...");
+    </script>
+    <script src="https://chatling.ai/js/embed.js" onload="initializeChat()"></script>
+    <script>
+        // This script runs after the external script is loaded
+        function initializeChat() {
+            console.log("External script loaded.");
+            // Initialize the chat here if needed
+            // Example: Chatling.init(); // Assuming Chatling is the object provided by the external script
+        }
+    </script>
+</head>
+<body>
+    <!-- Assuming the chat replaces this div content when loaded -->
+    <div id="chat-container"></div>
+</body>
+</html>

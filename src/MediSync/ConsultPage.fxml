@@ -23,13 +23,13 @@
             <Insets top="30.0" />
          </padding>
       </Label>
-      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutX="88.0" layoutY="270.0" pannable="true" prefHeight="692.0" prefWidth="1426.0" style="-fx-background-color: #FFFFFF;" vbarPolicy="NEVER">
+      <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" layoutX="88.0" layoutY="270.0" pannable="true" prefHeight="692.0" prefWidth="1420.0" style="-fx-background-color: #FFFFFF;" vbarPolicy="NEVER">
          <content>
             <HBox fx:id="doctorList" prefHeight="687.0" prefWidth="1898.0" style="-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); -fx-background-radius: 50px;">
                <children>
                   <VBox alignment="CENTER_LEFT" prefHeight="450.0" prefWidth="406.0" spacing="30.0">
                      <children>
-                        <ImageView fitHeight="245.0" fitWidth="255.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgae1" fitHeight="245.0" fitWidth="255.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Images/doctor2.jpg" />
                            </image>
@@ -74,7 +74,7 @@
                   </VBox>
                   <VBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="450.0" prefWidth="406.0" spacing="30.0">
                      <children>
-                        <ImageView fitHeight="245.0" fitWidth="255.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="image2" fitHeight="245.0" fitWidth="255.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Images/doctor3.jpg" />
                            </image>
@@ -119,7 +119,7 @@
                   </VBox>
                   <VBox alignment="CENTER_LEFT" layoutX="822.0" layoutY="10.0" prefHeight="450.0" prefWidth="406.0" spacing="30.0">
                      <children>
-                        <ImageView fitHeight="238.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="image3" fitHeight="238.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Images/doctor1.jpg" />
                            </image>
@@ -164,7 +164,7 @@
                   </VBox>
                   <VBox alignment="CENTER_LEFT" layoutX="416.0" layoutY="10.0" prefHeight="450.0" prefWidth="406.0" spacing="30.0">
                      <children>
-                        <ImageView fitHeight="245.0" fitWidth="255.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="image4" fitHeight="245.0" fitWidth="255.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Images/doctor2.jpg" />
                            </image>
@@ -209,7 +209,7 @@
                   </VBox>
                   <VBox alignment="CENTER_LEFT" layoutX="1063.0" layoutY="10.0" prefHeight="599.0" prefWidth="468.0" spacing="30.0">
                      <children>
-                        <ImageView fitHeight="245.0" fitWidth="255.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="image5" fitHeight="245.0" fitWidth="255.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@Images/doctor3.jpg" />
                            </image>

@@ -5,10 +5,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.stage.Popup;
 
@@ -33,6 +36,16 @@ public class ConsultController {
 
     @FXML
     private Button contactButton;
+    @FXML
+    private ImageView imgae1;
+    @FXML
+    private ImageView image2;
+    @FXML
+    private ImageView image3;
+    @FXML
+    private ImageView image4;
+    @FXML
+    private ImageView image5;
 
     private Popup popup;
 
@@ -41,6 +54,12 @@ public class ConsultController {
         configureScrollPane();
         contactButton.setOnAction(this::handleContactButton);
         setupNotificationPopup();
+
+        setImage(imgae1);
+        setImage(image2);
+        setImage(image3);
+        setImage(image4);
+        setImage(image5);
     }
 
     private void setupNotificationPopup() {
@@ -87,9 +106,15 @@ public class ConsultController {
 
     private void openWhatsAppChat() {
         try {
-            Desktop.getDesktop().browse(new URI("https://wa.me/+6200000000000"));
+            Desktop.getDesktop().browse(new URI("https://wa.me/+6282210885537"));
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
     }
+
+        private void setImage(ImageView image) {
+            double radius = (Math.min(image.getFitHeight(), image.getFitWidth())) / 2;
+            Circle clipCircle = new Circle(radius, radius, radius);
+            image.setClip(clipCircle);
+        }
 }
