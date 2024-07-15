@@ -16,6 +16,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
@@ -56,6 +58,9 @@ public class AdminController {
     private Button searchButton;
 
     @FXML
+    private Pane noResultsOverlay;
+
+    @FXML
     private TableView<OrderData> ordersTableView;
 
     @FXML
@@ -78,6 +83,7 @@ public class AdminController {
 
     private OrderDataManager orderDataManager;
     private Button selectedButton;
+    private ObservableList<OrderData> originalData;
 
     public void initialize() {
         orderDataManager = new OrderDataManager();
@@ -94,18 +100,18 @@ public class AdminController {
         initializeButtonEffects();
         pane.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
 
-        // Apply initial style to the selected button
         applyButtonStyle(dashboard);
+        searchBar.setOnKeyPressed(this::handleKeyPressed);
+        searchButton.setOnAction(this::performSearch);
     }
 
     private void loadOrders() {
         List<OrderData> orders = orderDataManager.getAllOrders();
-        ObservableList<OrderData> observableOrders = FXCollections.observableArrayList(orders);
-        ordersTableView.setItems(observableOrders);
+        originalData = FXCollections.observableArrayList(orders);
+        ordersTableView.setItems(originalData);
     }
 
     private void initializeButtonEffects() {
-        // Set initial style for buttons
         dashboard.setStyle("-fx-background-color: linear-gradient(from 25% 25% to 75% 75%, #0d134b, #3F51B5); -fx-text-fill: #0d134b;");
         medicines.setStyle("-fx-background-color: transparent; -fx-text-fill: #0d134b;");
         users.setStyle("-fx-background-color: transparent; -fx-text-fill: #0d134b;");
@@ -115,8 +121,6 @@ public class AdminController {
         Logout.setStyle("-fx-background-color: transparent; -fx-text-fill: #0d134b;");
 
         selectedButton = dashboard;
-
-        // Add hover effects
         addHoverEffect(dashboard);
         addHoverEffect(medicines);
         addHoverEffect(users);
@@ -236,10 +240,29 @@ public class AdminController {
 
     @FXML
     private void performSearch(ActionEvent event) {
-        // Implement search functionality here
+        String searchQuery = searchBar.getText().trim().toLowerCase();
+        ObservableList<OrderData> filteredData = FXCollections.observableArrayList();
+
+        ordersTableView.setItems(originalData);  // Reload original data before filtering
+
+        for (OrderData order : originalData) {
+            if (order.getUserEmail().toLowerCase().startsWith(searchQuery)) {
+                filteredData.add(order);
+            }
+        }
+
+        ordersTableView.setItems(filteredData);
+        noResultsOverlay.setVisible(filteredData.isEmpty());
     }
 
+    private void handleKeyPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            performSearch(new ActionEvent());
+        }
+    }
+
+
     private void hideNoResultsOverlay() {
-        // Implement hide no results overlay functionality here
+        noResultsOverlay.setVisible(false);
     }
 }

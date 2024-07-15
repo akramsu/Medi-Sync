@@ -78,12 +78,15 @@
                   <Spinner fx:id="spQuantity" prefHeight="53.0" prefWidth="189.0" style="-fx-background-color: #E3F2FD; -fx-border-radius: 30px; -fx-background-radius: 30px; -fx-border-color: #283593;" />
                </children>
             </HBox>
+            <Button fx:id="update" mnemonicParsing="false" onAction="#ButtonUpdate" prefHeight="66.0" prefWidth="211.0" style="-fx-background-color: #ffffff; -fx-background-radius: 30px;" text="Update" textAlignment="CENTER" textFill="#283593">
+               <font>
+                  <Font name="Segoe UI" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="60.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
-      <Button fx:id="update" layoutX="361.0" layoutY="915.0" mnemonicParsing="false" onAction="#ButtonUpdate" prefHeight="66.0" prefWidth="211.0" style="-fx-background-color: #283593; -fx-background-radius: 30px;" text="Update" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="Segoe UI Bold" size="24.0" />
-         </font>
-      </Button>
    </children>
 </Pane>

@@ -116,5 +116,13 @@
             <Insets left="470.0" top="35.0" />
          </VBox.margin>
       </Button>
+      <Label fx:id="errorsLabel" alignment="CENTER" prefHeight="29.0" prefWidth="1126.0" textFill="#283593">
+         <font>
+            <Font name="Segoe UI" size="24.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </Label>
    </children>
 </VBox>

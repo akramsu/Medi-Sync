@@ -60,6 +60,8 @@ public class SignUpController implements Initializable {
 
     @FXML
     private Text text;
+    @FXML
+    private Label errorsLabel;
 
     @FXML
     public void getDateOfBirth(ActionEvent event) {
@@ -76,7 +78,6 @@ public class SignUpController implements Initializable {
 
     @FXML
     private void handleButtonSignUp(ActionEvent event) {
-        // Retrieve user input
         String emailInput = email.getText();
         String passwordInput = password.getText();
         String phoneInput = phoneNumber.getText();
@@ -84,30 +85,29 @@ public class SignUpController implements Initializable {
         String genderInput = gender.getText();
         String addressInput = address.getText();
 
-        // Validate input
+        
         if (!isValidEmail(emailInput)) {
-            showAlert(Alert.AlertType.WARNING, "SIGN UP Error", "Invalid email format.");
+            errorsLabel.setText("Invalid email format should contain @, .com");
             return;
         }
         if (!isValidPhoneNumber(phoneInput)) {
-            showAlert(Alert.AlertType.WARNING, "SIGN UP Error", "Invalid phone number. Only digits are allowed.");
+            errorsLabel.setText("Invalid Phone Number digits only");
             return;
         }
         if (passwordInput.isEmpty() || dobInput.isEmpty() || genderInput.isEmpty() || addressInput.isEmpty()) {
-            showAlert(Alert.AlertType.WARNING, "SIGN UP Error", "Please fill in all fields.");
+            errorsLabel.setText("Please fill in all fields");
             return;
         }
 
-        // Create UserData object
+        
         UserData userData = new UserData(emailInput, passwordInput, phoneInput, dobInput, genderInput, addressInput);
 
-        // Add user using UserDataManager
+        
         userDataManager.addUser(userData);
 
-        // Set the current user
         CurrentUser.getInstance().setCurrentUser(userData);
 
-        // Load the landing page
+        
         Pane page = openScene.getPane("LandingPage");
         if (page != null) {
             Scene scene = new Scene(page);
@@ -125,7 +125,6 @@ public class SignUpController implements Initializable {
         genderBox.getItems().addAll(choices);
         genderBox.setOnAction(this::getGender);
 
-        // Add event handlers for Enter key
         email.setOnKeyPressed(this::handleKeyPressed);
         password.setOnKeyPressed(this::handleKeyPressed);
         phoneNumber.setOnKeyPressed(this::handleKeyPressed);
@@ -149,11 +148,11 @@ public class SignUpController implements Initializable {
         return phone != null && phone.matches("\\d+");
     }
 
-    private void showAlert(Alert.AlertType alertType, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setContentText(message);
-        alert.setHeaderText(null);
-        alert.showAndWait();
-    }
+    // private void showAlert(Alert.AlertType alertType, String title, String message) {
+    //     Alert alert = new Alert(alertType);
+    //     alert.setTitle(title);
+    //     alert.setContentText(message);
+    //     alert.setHeaderText(null);
+    //     alert.showAndWait();
+    // }
 }

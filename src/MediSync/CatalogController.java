@@ -57,7 +57,7 @@ public class CatalogController {
     @FXML
     private TableColumn<MedicinesData, Void> buyColumn;
     @FXML
-    private Pane noResultsOverlay; // The overlay pane for no results
+    private Pane noResultsOverlay;
 
     private Popup popup;
     private ObservableList<MedicinesData> originalData;
@@ -70,8 +70,7 @@ public class CatalogController {
         MedPrice.setCellValueFactory(new PropertyValueFactory<>("medicinePrice"));
         MedQuant.setCellValueFactory(new PropertyValueFactory<>("medicineQuantity"));
 
-        // Add Buy button to each row with custom design
-        buyColumn.setCellFactory(new Callback<TableColumn<MedicinesData, Void>, TableCell<MedicinesData, Void>>() {
+        buyColumn.setCellFactory(new Callback<TableColumn<MedicinesData, Void>, TableCell<MedicinesData, Void>>() { //@ak buy button for all rows
             @Override
             public TableCell<MedicinesData, Void> call(final TableColumn<MedicinesData, Void> param) {
                 final TableCell<MedicinesData, Void> cell = new TableCell<MedicinesData, Void>() {
@@ -110,10 +109,7 @@ public class CatalogController {
         setupNotificationPopup();
         pane.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
 
-        // Add event handler for Enter key on search bar
         searchBar.setOnKeyPressed(this::handleKeyPressed);
-
-        // Add action event handler for search button
         searchButton.setOnAction(this::performSearch);
     }
 
@@ -137,7 +133,6 @@ public class CatalogController {
         String searchQuery = searchBar.getText().trim().toLowerCase();
         ObservableList<MedicinesData> filteredData = FXCollections.observableArrayList();
 
-        // Reload original data before filtering
         MedTable.setItems(originalData);
 
         for (MedicinesData medicine : originalData) {
@@ -162,8 +157,7 @@ public class CatalogController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/MediSync/BuyPage.fxml"));
             Pane buyPage = loader.load();
 
-            // Get the controller of the BuyPage
-            BuyController buyController = loader.getController();
+            BuyController buyController = loader.getController(); //@ak to pass the data from another controller
             buyController.setMedicineDetails(data);
 
             pane.getChildren().setAll(buyPage);

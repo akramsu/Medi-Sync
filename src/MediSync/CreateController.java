@@ -29,7 +29,6 @@ public class CreateController implements Initializable {
     private Label expirationDate;
     @FXML
     private DatePicker dpExpirationDate;
-
     @FXML
     private Label quantity;
     @FXML
@@ -43,7 +42,15 @@ public class CreateController implements Initializable {
     @FXML
     public void ButtonAdd(ActionEvent event) {
         try {
-            System.out.println("ButtonAdd method called.");
+            System.out.println("ButtonAdd method called."); 
+
+            System.out.println("medicineName: " + (medicineName == null ? "null" : "initialized"));
+            System.out.println("cbForm: " + (cbForm == null ? "null" : "initialized"));
+            System.out.println("description: " + (description == null ? "null" : "initialized"));
+            System.out.println("price: " + (price == null ? "null" : "initialized"));
+            System.out.println("dpExpirationDate: " + (dpExpirationDate == null ? "null" : "initialized"));
+            System.out.println("spQuantity: " + (spQuantity == null ? "null" : "initialized"));
+            System.out.println("medicinesDataManager: " + (medicinesDataManager == null ? "null" : "initialized"));
 
             String name = medicineName.getText();
             System.out.println("Medicine Name: " + name);
@@ -63,7 +70,6 @@ public class CreateController implements Initializable {
             int quantity = spQuantity.getValue();
             System.out.println("Quantity: " + quantity);
 
-            // Check for null or empty values and show an error message if any field is null or empty
             if (name == null || name.isEmpty()) {
                 System.out.println("Error: Medicine name is null or empty.");
                 showAlert("Error", "Please fill in the medicine name.");
@@ -94,19 +100,14 @@ public class CreateController implements Initializable {
                 return;
             }
 
-            // Parse the price
             double price = Double.parseDouble(priceText);
 
-            // Format the expiration date
             myFormattedDate = expirationDate.format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
 
-            // Create a new MedicinesData object
             MedicinesData medicine = new MedicinesData(name, form, description, price, myFormattedDate, quantity);
 
-            // Add the medicine to the medicinesDataManager
             medicinesDataManager.addMedicine(medicine);
 
-            // Clear the input fields after adding the medicine
             clearFields();
         } catch (NumberFormatException e) {
             showAlert("Error", "Please enter a valid price.");

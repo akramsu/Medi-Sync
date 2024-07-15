@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -29,6 +30,8 @@ public class SigninController implements Initializable {
 
     @FXML
     private Button signin;
+    @FXML
+    private Label errorsLabel;
 
     @FXML
     public void handleButtonSignin(ActionEvent event) {
@@ -43,7 +46,7 @@ public class SigninController implements Initializable {
                 CurrentUser.getInstance().setCurrentUser(validUser);
                 loadScene(event, "LandingPage");
             } else {
-                showAlert(Alert.AlertType.WARNING, "Signin Error", "Invalid username or password.");
+                errorsLabel.setText("Invalid Username or Password!");
             }
         }
     }
@@ -71,16 +74,8 @@ public class SigninController implements Initializable {
         }
     }
 
-    private void showAlert(Alert.AlertType alertType, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setContentText(message);
-        alert.setHeaderText(null);
-        alert.showAndWait();
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Initialization code if needed
+        
     }
 }

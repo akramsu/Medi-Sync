@@ -42,7 +42,7 @@
                   <ChoiceBox fx:id="cbForm" onDragDetected="#getForm" prefHeight="37.0" prefWidth="330.0" style="-fx-background-color: #E3F2FD; -fx-border-radius: 30px; -fx-background-radius: 30px; -fx-border-color: #283593;" />
                </children>
             </HBox>
-            <TextField fx:id="desciption" prefHeight="60.0" prefWidth="550.0" promptText="Desciption" style="-fx-background-color: #E3F2FD; -fx-background-radius: 30px; -fx-border-color: #283593; -fx-border-radius: 30px;">
+            <TextField fx:id="description" prefHeight="60.0" prefWidth="550.0" promptText="Desciption" style="-fx-background-color: #E3F2FD; -fx-background-radius: 30px; -fx-border-color: #283593; -fx-border-radius: 30px;">
                <font>
                   <Font size="24.0" />
                </font>
